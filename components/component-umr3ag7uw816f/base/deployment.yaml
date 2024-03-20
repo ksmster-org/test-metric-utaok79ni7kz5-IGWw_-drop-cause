@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: component-umr3ag7uw816f
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: component-umr3ag7uw816f
+    app.kubernetes.io/part-of: test-metric-utaok79ni7kz5
+  name: component-umr3ag7uw816f
+spec:
+  replicas: 0
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: go-app
+      app.kubernetes.io/instance: component-umr3ag7uw816f
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: go-app
+        app.kubernetes.io/instance: component-umr3ag7uw816f
+    spec:
+      containers:
+      - image: quay.io/redhat-user-workloads/rhtap-spi-tenant/remotesecret/remotesecret-operator@sha256:10cde34c19be468138cf883274c9c7c81270403d8d7b1b0dc62ca8798a151c7a
+        name: my-go
+        ports:
+        - containerPort: 8081
+          name: http
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 15m
+            memory: 30Mi
+          requests:
+            cpu: 10m
+            memory: 25Mi
+status: {}
